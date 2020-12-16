@@ -1,24 +1,29 @@
 import logo from './logo.svg';
 import './App.css';
+import ChatBot from "react-simple-chatbot";
+import { Segment } from "semantic-ul-react";
 
 function App() {
+  const steps = [
+    {
+      id:'Greet',
+      message:'Hello, Welcome to our website',
+      trigger:'Ask Name'
+
+    },
+    {
+      id:'Ask Name',
+      message:'Please enter your name',
+      trigger:'Waiting'
+    }
+  
+]
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Segment floated="right">
+      <ChatBot steps={steps}/>
+    </Segment>
+    </>
   );
 }
 
