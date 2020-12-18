@@ -1,7 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+
+import {Container, Row} from 'react-bootstrap';
 import ChatBot from "react-simple-chatbot";
-import { Segment } from "semantic-ui-react";
+//import { Segment } from "semantic-ui-react";
+import styled from 'styled-components';
+
+const Styles = styled.div`
+.chatbot{
+  display: flex;
+  justify-content: center;
+}
+`
 
 function App() {
   const steps = [
@@ -13,7 +21,7 @@ function App() {
     },
     {
       id:'Ask Name',
-      message:'Please enter your name',
+      message:'Please enter your name.',
       trigger:'waiting1'
     },
 
@@ -24,42 +32,78 @@ function App() {
     },
     {
       id:'Name',
-      message:'Hi {previousValue}, Please select your issue',
-      trigger: "issue"
+      message:'Hi {previousValue}, Please type your email.',
+      trigger: 'waiting2'
+    },
+    {
+      id:'waiting2',
+      user:true,
+      trigger:'emailview'
+    },
+    
+    {
+      id:'emailview',
+      message: 'Thank you for your email - {previousValue}.',
+      trigger:'con'  
+    },
+    {
+      id:'con',
+      message:'Your number',
+      trigger:'waiting3'
+    },
+    {
+      id:'waiting3',
+      user:true,
+      trigger:'number'
+    },
+    {
+      id:'number',
+      message:'Thank you for your number - {previousValue}.',
+      trigger:'issues'
+    },
+    {
+      id:'issues',
+      message: 'Please select below issues.',
+      trigger:'issue'
     },
     {
       id:'issue',
       options:[
         {
-          value:'React',
-          label:'React',
-          trigger:'React'
+          value:'Slow',
+          label:'Slow',
+          trigger:'Slow'
         },
         {
-          value:'Angular',
-          label:'Angular',
-          trigger:'Angular'
+          value:'Website error',
+          label:'Website error',
+          trigger:'Website error'
         },
         ]
     },
     {
-      id:'React',
-      message:'Thanks for telling your react issue. We will contact you soon.',
+      id:'Slow',
+      message:'Thanks for telling your react issue. We will contact you as soon as possible.',
       end:true
     },
     {
-      id:'Angular',
-      message:'Thanks for telling your Angular issue. We will contact you soon.',
+      id:'Website error',
+      message:'Thanks for telling your Angular issue. We will contact you as soon as possible.',
       end:true
     }
   
 ]
   return (
-    <>
-    <Segment floated="right">
-      <ChatBot steps={steps}/>
-    </Segment>
-    </>
+    <Styles>
+    <Container>
+    <span className="chatbot m-4"><b>Simple Chatbot React || Developed by <a href="https://www.shrestharakesh.com.np/">Rakesh Shrestha</a>.</b></span>
+      <div className="chatbot">
+      <ChatBot steps={steps} />
+      </div>
+      <span className="chatbot m-4"><b>Thank You !</b></span>
+      
+    </Container>
+    </Styles>
   );
 }
 
