@@ -32,7 +32,7 @@ function App() {
     },
     {
       id:'Name',
-      message:'Hi {previousValue}, Please type your email.',
+      message:'Hi {previousValue}, Please type your email to report issues on websites.',
       trigger: 'waiting2'
     },
     {
@@ -71,24 +71,24 @@ function App() {
       options:[
         {
           value:'Slow',
-          label:'Slow',
+          label:'Slow Website?',
           trigger:'Slow'
         },
         {
           value:'Website error',
-          label:'Website error',
+          label:'Website error?',
           trigger:'Website error'
         },
         ]
     },
     {
       id:'Slow',
-      message:'Thanks for telling your react issue. We will contact you as soon as possible.',
+      message:'Thanks for telling your issue. We will fix and contact you as soon as possible.',
       end:true
     },
     {
       id:'Website error',
-      message:'Thanks for telling your Angular issue. We will contact you as soon as possible.',
+      message:'Thanks for telling your issue. We will contact you as soon as possible.',
       end:true
     }
   
